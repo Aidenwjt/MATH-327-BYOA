@@ -1,0 +1,4 @@
+My Program Ideas:
+- Calculate and plot the first n perfect numbers
+- Wilson's Theorem plotting p-gons
+- Visualizing congruence classes
