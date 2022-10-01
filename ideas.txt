@@ -4,7 +4,7 @@ My Program Ideas:
 - Visualizing congruence classes
 
 
-- Implement a prime seive --> visual or computational?
+- Implement a prime sieve --> visual or computational?
 - Compare runtimes of prime generation, plot runtimes
 - LDE solver --> EEA implementation
 - RSA ALG (Related to Primes)
