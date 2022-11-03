@@ -8,4 +8,4 @@
 	- http://www.supercomputingchallenge.org/14-15/finalreports/46.pdf
 
 ## Implemented Programs:
-- <Insert file names here>
+- Insert file names here
