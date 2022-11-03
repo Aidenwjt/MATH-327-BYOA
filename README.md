@@ -11,4 +11,4 @@
 - Insert file names here
 
 ## Implemented Programs (Noah):
-- Insert file names here
+- How bout u implement these nuts 8)
