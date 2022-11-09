@@ -1,4 +1,12 @@
 import math
+# import tkinter as tk
+
+# window = tk.Tk()
+# to rename the title of the window
+# window.title("Sieve")
+# pack is used to show the object in the window
+# window.mainloop()
+
 '''
 Based on ALGO FROM https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
@@ -17,12 +25,23 @@ def sieve(n: int) -> list:
     - If curr index is True --> set all i^2, i^2+i,i^2+2i... to False
     - Once range exceeded, all False values == Prime
     '''
-    for i in range(2, math.ceil(math.sqrt(n))):
+    round = 0
+    for i in range(2, n+1):
+        print(str(round)+": --> ",end=" ")
+        round += 1
+        for k in range(2,n+1):
+            if domain[k]:
+                print("T", end=",")
+            else:
+                print("F", end=",")
+
+        print("\n")        
         if (domain[i] == True):
             for j in range(pow(i,2), n+1, i):
                 domain[j] = False
+ 
+    print("\n")
 
-    
     primes = []
     for isPrime in range(2, n+1):
         if domain[isPrime]:
@@ -32,7 +51,7 @@ def sieve(n: int) -> list:
 
 '''
 Test to see how many primes are in a range
-cross check with gogole to see if correct...
+cross check with google to see if correct...
 Format output as well
 '''
 def primeTest(tmpList: list, length: int):
@@ -52,7 +71,8 @@ def printPrimes(tmp: list):
 
 
 def main():
-    searchRange = 10000
+    searchRange = 10
     primesList = sieve(searchRange)
+    # printPrimes(primesList)
     primeTest(primesList,searchRange)
 main()
