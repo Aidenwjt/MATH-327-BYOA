@@ -1,0 +1,90 @@
+% TODO
+% 
+% 
+% 
+% 
+% 
+% 
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{amsmath,amsthm}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{thmtools}
+\usepackage{fancyhdr}
+\graphicspath{{./IMG/}}
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+
+%-------------- HEADER -- FOOTER --------------------------------------------------------
+% Main Title
+\newcommand{\PaperTitle}{MAIN TITLE HERE}
+% Sub Title
+\newcommand{\PaperSubTitle}{SUBTITLE HERE}
+% Authors
+\newcommand{\Authors}{Aiden Taylor and Noah Pinel}
+
+% Title Page
+\title{
+    % \vspace{2in}
+    \textmd{\textbf{\PaperTitle\\ \PaperSubTitle}}\\
+    \author{Created by \Authors}
+    \date{}
+    \vspace{6in}
+}
+
+%--- LAZY -----------------------------------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ps}{\{p_n\}}
+
+%---------------------HEADER FOOTER-----------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+
+\fancyhead[L]{\slshape\nouppercase{\leftmark}}
+\rhead{MATH 327 Paper}
+\fancyfoot{}
+ 
+% Hide section for format purposes i.e ToC and Abstract.
+\newcommand\invisiblesection[1]{%
+  \refstepcounter{section}%
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \sectionmark{#1}}
+
+%----------------START-------------------------------------
+\begin{document}
+\maketitle % Print the title
+\thispagestyle{empty}
+\newpage
+\fancyfoot[R]{\thepage}
+%----------------TABLE OF CONTENTS------------------------------------------
+\tableofcontents
+\invisiblesection{Table of contents}
+\newpage
+%----------------ABSTRACT---------------------------------------------------
+\invisiblesection{Abstract}
+\begin{abstract}
+ Give a general Overview of our project, explain high level what we each did...
+\end{abstract}
+\newpage
+
+% -------- TEMPLATE FOR EACH CHAPTER --------
+% PAGE TEMPLATE, Section{Add Chapter title etc.}
+% Subsection will be all subtitles contained in your main chapter, i.e. Overveiw, Summary
+\section{Foo Program}
+\subsection{Overview}
+This is an Overview of the program Foo 
+\subsection{The Math Behind it}
+The math used in Foo was ...
+\subsection{Conclusion}
+This then concludes our ...
+\end{document}

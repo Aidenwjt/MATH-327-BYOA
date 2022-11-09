@@ -11,4 +11,6 @@
 - Insert file names here
 
 ## Implemented Programs (Noah):
-- How bout u implement these nuts 8)
+- Sieve of Eratosthenes (DONE) Possibility of GUI
+- Sieve of Sundaram (Build) Same as Eratosthenes, get it working, then look to expand it
+- Something from later in the course
