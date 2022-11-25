@@ -8,7 +8,12 @@
 	- http://www.supercomputingchallenge.org/14-15/finalreports/46.pdf
 
 ## Implemented Programs (Aiden):
-- Insert file names here
+- 2 Variable LDE Solver (ALMOST DONE)
+- Divisor Power Sum Solver (DONE)
+- Simple Ford Circle Drawer (ALMOST DONE but might scrap since GUIs are cringe)
+- Linear Congruence Solver (Possibly use LDE solver with this)
+- Combine a few solvers into a library
+- Something later in the course
 
 ## Implemented Programs (Noah):
 - Sieve of Eratosthenes (DONE) Possibility of GUI
