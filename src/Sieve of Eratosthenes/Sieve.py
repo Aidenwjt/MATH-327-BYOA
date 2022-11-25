@@ -70,6 +70,7 @@ def printPrimes(tmp: list):
         print(i, end=",")
 
 
+
 def main():
     searchRange = 10
     primesList = sieve(searchRange)
