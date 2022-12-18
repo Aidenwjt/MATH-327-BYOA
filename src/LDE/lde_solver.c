@@ -18,8 +18,9 @@ int main(int argc, char *argv[])
 
 	char *ptr1, *ptr2, *ptr3;
 	int a, b, c;
-	/* TODO: More descriptive variable names for EEA */
 	int i, j, k, l, q, r, prev_r, temp_l, temp_j, a1, b1, mult;
+	int temp_a, temp_b;
+	int negative_flag;
 
 	/* Converting args and checking for bad inputs */
 	errno = 0;
@@ -42,21 +43,11 @@ int main(int argc, char *argv[])
 	b = convert2;
 	c = convert3;
 
-	/* TODO: Check for negative values? (especially if a = b) */
-
-	if(a < b)
-	{
-		int temp_a = a;
-		a = b;
-		b = temp_a;
-	}
-
 	/* Setting values for EEA */
 	i = j = 1;
 	a1 = a;
 	b1 = b;
 	k = l = temp_l = temp_j = r = prev_r = q = 0;
-
 
 	/* EEA loop */
 	while(1)
@@ -80,6 +71,14 @@ int main(int argc, char *argv[])
 		k = temp_j;
 	}
 
+	/* Swap signs if gcd is negative */
+	negative_flag = 0;
+	if(prev_r < 0)
+	{
+		prev_r *= -1;
+		negative_flag = 1;
+	}
+	
 	/* If GCD(a,b) != 1 then need to check if c is a multiple of the GCD(a,b) */
 	mult = c;
 	if(prev_r > 1)
@@ -91,6 +90,7 @@ int main(int argc, char *argv[])
 		}
 		mult /= prev_r;
 	}
+	/* When absolute value of a and b are equal */
 	if(prev_r == 0)
 	{
 		prev_r = a;
@@ -107,6 +107,19 @@ int main(int argc, char *argv[])
 	/* Base solutions to LDE */
 	int x_0 = l*mult;
 	int y_0 = j*mult;
+
+	/* Make sure we are using proper signs */
+	if(a*x_0 + b*y_0 != c)
+	{
+		if(a*(-1*x_0) + b*y_0 == c) x_0 *= -1;
+		if(a*x_0 + b*(-1*y_0) == c) y_0 *= -1;
+		if(a*(-1*x_0) + b*(-1*y_0) == c) 
+		{
+			x_0 *= -1;
+			y_0 *= -1;
+		}
+	}
+	if(negative_flag) prev_r *= -1;
 
 	printf("Base solution for %dx + %dy = %d:\n\n%d(%d) + %d(%d) = %d.\n", a, b, c, a, x_0, b, y_0, c);
 	printf("\nGeneral solution for %dx + %dy = %d:\n\nx = %d + (%d)n, and y = %d - (%d)n,\n\n%d(%d + (%d)n) + %d(%d - (%d)n) = %d, for all integers n.\n",
