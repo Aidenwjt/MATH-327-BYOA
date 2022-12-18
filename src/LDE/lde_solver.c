@@ -5,11 +5,9 @@
 #include <limits.h> // INT_MAX, INT_MIN
 #include <stdlib.h> // strtol
 
-#define DEBUG 1
-
 int main(int argc, char *argv[])
 {
-#ifdef DEBUG
+	/* Some quick error checking */
 	if(argc != 4)
 	{
 		printf("Usage: %s a b c\n(ax + by = c)\n", argv[0]);
@@ -22,7 +20,6 @@ int main(int argc, char *argv[])
 	int temp_a, temp_b;
 	int negative_flag;
 
-	/* Converting args and checking for bad inputs */
 	errno = 0;
 	long convert1 = strtol(argv[1], &ptr1, 10);
 	long convert2 = strtol(argv[2], &ptr2, 10);
@@ -85,18 +82,19 @@ int main(int argc, char *argv[])
 	{
 		if(mult%prev_r != 0)
 		{
-			printf("%dx + %dy = %d has no integer solutions.\n", a, b, c);
+			printf("%dx + %dy = %d has no integer solutions.\n\n", a, b, c);
 			return 0;
 		}
 		mult /= prev_r;
 	}
+
 	/* When absolute value of a and b are equal */
 	if(prev_r == 0)
 	{
 		prev_r = a;
 		if(mult%prev_r != 0)
 		{
-			printf("%dx + %dy = %d has no integer solutions.\n", a, b, c);
+			printf("%dx + %dy = %d has no integer solutions.\n\n", a, b, c);
 			return 0;
 		}
 		mult /= prev_r;
@@ -121,11 +119,10 @@ int main(int argc, char *argv[])
 	}
 	if(negative_flag) prev_r *= -1;
 
+	/* Print results */
 	printf("Base solution for %dx + %dy = %d:\n\n%d(%d) + %d(%d) = %d.\n", a, b, c, a, x_0, b, y_0, c);
-	printf("\nGeneral solution for %dx + %dy = %d:\n\nx = %d + (%d)n, and y = %d - (%d)n,\n\n%d(%d + (%d)n) + %d(%d - (%d)n) = %d, for all integers n.\n",
+	printf("\nGeneral solution for %dx + %dy = %d:\n\nx = %d + (%d)n, and y = %d - (%d)n,\n\n%d(%d + (%d)n) + %d(%d - (%d)n) = %d, for all integers n.\n\n",
 		       	a, b, c, x_0, (b/prev_r), y_0, (a/prev_r), a, x_0, (b/prev_r), b, y_0, (a/prev_r), c);
 	
-#else
-#endif
 	return 0;
 }

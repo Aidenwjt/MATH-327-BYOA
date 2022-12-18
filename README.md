@@ -8,11 +8,9 @@
 	- http://www.supercomputingchallenge.org/14-15/finalreports/46.pdf
 
 ## Implemented Programs (Aiden):
-- 2 Variable LDE Solver (Almost  done, need to add negative constants use case)
-- Linear Congruence Solver (Possibly use LDE solver with this?)
-- Diffie-Hellman protocol, simulate the creation of a symmetric key using Miller-Rabin? (In Progress)
-- Divisor Power Sum Solver (DONE, probably won't use)
-- Combine a few solvers into a library?
+- 2 Variable LDE Solver (DONE)
+- Miller-rabin Test less than 2047 (DONE)
+- Divisor Power Sum Solver (DONE, not using though)
 
 ## Implemented Programs (Noah):
 - Sieve of Eratosthenes (DONE) Possibility of GUI
