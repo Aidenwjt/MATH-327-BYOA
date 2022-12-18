@@ -4,7 +4,9 @@
 #include <stdlib.h> // strtol, srand, rand
 #include <time.h> // time
 
-/* Iterative Function to calculate (x^y)%p in O(log y) */
+// =================================================================================
+// Modular exponentiation function copied from:
+// https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/
 int power(long long x, unsigned int y, int p)
 {
 	int res = 1;
@@ -22,37 +24,41 @@ int power(long long x, unsigned int y, int p)
 	}
 	return res;
 }
+// ============================ end of copied code =================================
 
+
+// =================================================================================
+// Miller-rabin test adapted from Wikipedia pseudo-code:
+// https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
 int main(int argc, char *argv[])
 {
-	if(argc != 3)
+	/* Some quick error checking */
+	if(argc != 2)
 	{
-		printf("Usage: %s n k\nn = number to check primality of, and k is the desired accuracy of the check.\n", argv[0]);
+		printf("Usage: %s n\nn = number to check primality of.\n", argv[0]);
 		return 0;
 	}
 
-	char *ptr1, *ptr2;
-	int n, k, s, d, x, y, a, i, j, l;
-	long long int temp;
+	char *ptr;
+	int n, s, d, x, y, temp, i;
 
 	errno = 0;
-	long convert1 = strtol(argv[1], &ptr1, 10);
-	long convert2 = strtol(argv[2], &ptr2, 10);
-	if(errno != 0 || 
-	  *ptr1 != '\0' || *ptr2 != '\0' || 
-          convert1 > INT_MAX || convert1 < INT_MIN || convert2 > INT_MAX || convert2 < INT_MIN)
+	long convert = strtol(argv[1], &ptr, 10);
+	if(errno != 0 || *ptr != '\0' || convert > INT_MAX || convert < INT_MIN)
 	{
 		printf("Bad inputs, please only pass integers greater than %d and less than %d.\n", INT_MIN, INT_MAX);
-		printf("Usage: %s n k\nn = number to check primality of, and k is the desired accuracy of the check.\n", argv[0]);
+		printf("Usage: %s n \nn = number to check primality of.\n", argv[0]);
 		return 0;
 	}
-	n = convert1;
-	k = convert2;
-	if(n <= 3 || n >= 2047 || n%2 == 0 || k < 1)
+	n = convert;
+
+	/* Making sure our number is in the proper range and not even */
+	if(n <= 2 || n >= 2047 || n%2 == 0)
 	{
-		printf("Please enter an odd integer 3 < n < 2047 and k > 1.\n");
+		printf("Please enter an odd integer 2 < n < 2047.\n");
 		return 0;
 	}
+
 	/* First need to find values s > 0 and odd d > 0 such that n - 1 = 2^s * d */
 	s = 1;
 	d = 0;
@@ -74,40 +80,26 @@ int main(int argc, char *argv[])
 		if(d != 0) break;
 		s++;
 	}
-	//printf("s = %d d = %d\n",s,d);
 
-	time_t t;
-	srand((unsigned) time(&t));
-
-	a = 2;
-	/* Primality test n < 2047 and a = 2 */
-	for(i = 0; i < k; ++i)
+	/* Primality test 2 < n < 2047 and witness prime a = 2 */
+	x = power(2,d,n);
+	for(i = 0; i < s; ++i)
 	{
-		//a = rand() % ( (n - 2) + 1 - 2) + 2;
-		//temp = a;
-		//printf("round i = %d a = %d ", i, a);
-		//for(j = 0; j < d-1; ++j) temp *= a;
-		//x = temp%n;
-		x = power(a,d,n);
-		//printf("temp = %lld x = %d ", temp, x);
-		for(l = 0; l < s; ++l)
-		{
-			y = (x * x)%n;
-			//printf("y = %d\n",y);
-			if( (y == 1) && (x != 1) && (x != n-1) )
-			{
-				printf("%d is definitely composite.\n", n);
-				return 0;
-			}
-			x = y;
-		}
-		if(y != 1)
+		y = (x * x)%n;
+		if( (y == 1) && (x != 1) && (x != n-1) )
 		{
 			printf("%d is definitely composite.\n", n);
 			return 0;
 		}
+		x = y;
 	}
-	printf("%d is probably prime and tested with %d trials.\n", n, k);
+	if(y != 1)
+	{
+		printf("%d is definitely composite.\n", n);
+		return 0;
+	}
+	printf("%d is prime, and tested again witness prime 2.\n", n);
 
 	return 0;
 }
+// ============================ end of adapted code ================================
