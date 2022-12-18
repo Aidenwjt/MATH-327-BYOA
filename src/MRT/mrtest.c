@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <errno.h> // errno
 #include <limits.h> // INT_MAX, INT_MIN
-#include <stdlib.h> // strtol, srand, rand
-#include <time.h> // time
+#include <stdlib.h> // strtol
 
 // =================================================================================
 // Modular exponentiation function copied from:
