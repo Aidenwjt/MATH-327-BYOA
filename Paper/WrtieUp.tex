@@ -179,6 +179,7 @@ my implementation of the EEA by Tabular Method is as follows,
 	\State{$k= \ell = temp\_\ell = temp\_j \leftarrow 0$}
 	\State{$r = prev\_r = q \leftarrow 0$} \Comment{Remainder, Previous Remainder, and Quotient for GCD calculation}
 	\While{true}
+		\State{$prev\_r \leftarrow r$}
 		\State{$r \leftarrow a1\!\mod{b1}$} \Comment{Calculating remainder}
 		\If{$r = 0$}
 			\State{break out of loop}
