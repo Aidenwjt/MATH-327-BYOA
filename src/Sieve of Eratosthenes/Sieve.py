@@ -1,20 +1,18 @@
-# import math 
-# (Use sqrt func for optimize on sieve main forloop, O(n log log n))
-#
-#
+#############################################
+# striaght forward implmentation of the 
+# sieve of Eratosthenes.
+# NOTE:
 # NO ERROR HANDLING HAS BEEN IMPLEMENTED
-# WILL ONLY RUN IF POSITIVE INT >0 IS INPUT
+# WILL ONLY RUN IF POSITIVE INT IS INPUTED
+#############################################
 
 
+'''
+Based on ALGO FROM https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-
-
-##
-# Based on ALGO FROM https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-#
-# Input: any number in Z > 1
-# Output: list of primes p, such that 2 <= p <= n
-##
+Input: any number in Z > 1
+Output: list of primes p, such that 2 <= p <= n
+'''
 def sieve(n: int) -> list:
     '''
     - domain is a bool list from 2 <= i <= n
@@ -28,7 +26,7 @@ def sieve(n: int) -> list:
     - Once range exceeded, all False values == Prime
     - Commented out code will show the actual algo running in the terminal
       only really good for seeing how it works, Uses small number or it gets
-      to busy.
+      to0 busy.
     '''
     round = 0
     for i in range(2, n+1):
@@ -51,7 +49,7 @@ def sieve(n: int) -> list:
     return primes
 
 
-# Format output
+# - Format output
 def printPrimes(tmp: list, length: int):
     LastPrime = tmp[-1]
     for i in tmp:
@@ -64,14 +62,14 @@ def printPrimes(tmp: list, length: int):
 
 
 def main():
-    # Grab UI
+    # - Grab UI
     searchRange = int(input("ENTER AN INTEGER: "))
 
-    # Main method, actually doing all the dirty work
+    # - Main method, actually doing all the dirty work
     primesList = sieve(searchRange)
     
-    # This will just print the primes out from 2-n
+    # - This will just print the primes out from 2-n
     # printPrimes(primesList,searchRange)
-    # Hardcode exit messege if printPrimes() isnt enabled
+    # - Hardcode exit messege if printPrimes() isnt enabled
     print(str(len(primesList)) + " Primes from 2 through " + str(searchRange))
 main()
