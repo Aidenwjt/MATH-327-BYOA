@@ -82,9 +82,7 @@
 \end{abstract}
 \newpage
 
-% -------- TEMPLATE FOR EACH CHAPTER --------
-% PAGE TEMPLATE, Section{Add Chapter title etc.}
-% Subsection will be all subtitles contained in your main chapter, i.e. Overveiw, Summary
+% -------- NOAH WU #1/2 --------
 \section{Implementation of The Sieve of Eratosthenes in Python}
 \subsection{Overview}
 The Sieve of Eratosthenes is a type of prime sieve. Prime sieves are algorithms 
@@ -132,4 +130,30 @@ The last calculation presented took just about an epsilon under a minute to calc
 I feel is very impressive, thus, Eratosthenes sieve is a powerful tool to find primes up to some appropriate positive integer. This problem also displays the interplay between Mathematics 
 and Computer Science and how they complement each other very well. The source code for Sieve.py will be included in our submission with documentation if you're
 wanting to poke around.
+
+\newpage
+% -------- NOAH WU #1/2 --------
+\section{Visual Representation of Euler's Phi Function}
+\subsection{Overview}
+Euler is one of the most well known Mathematicians ever, the following program I implemented 
+is a visual representation of function he created, namely the Euler Phi function.
+\subsection{What is it?}
+Euler's Phi function takes in a positive value n, and counts the number of relatively prime numbers up to the original n.
+For example $\Phi(10)= |\{1,3,7,9\}| = 4$, so Euler's function is telling us that from 1-10, there are 4 numbers coprime to 10.
+
+\subsection{The Implementation}
+While reading the MATH-327's assigned text book I really enjoyed seeing all the visual representations of the math we were learning. 
+I decided to use python to create a visual of this special function. The process of coding this wasn't too bad, it consisted of reading in
+an n value, then for each i up to n, I would call the Phi function that I wrote, it would simply just check for a $\gcd(i_j, n) == 1$ and if 
+it returned true it was added to a list. After I had this list of all 1,..., n's respected Phi function values I was able to use the python library
+Matplotlib.pyplot to graph this list against the corresponding n value, (\ref{fig:PhiPlot}) is the awesome visual that was generated.\\
+\begin{figure}
+  \centering
+  \includegraphics[scale=.4]{PHI.png}
+  \caption{Euler's Phi function plotted up to 10,000}
+  \label{fig:PhiPlot}
+\end{figure}
+\subsection{Conclusion}
+The visual representations that arise from ideas in number theory are amazing to look at, and Euler's Phi function is no excuse. The power computers 
+give us to generate these models is just another example of how technology can give us an insight into mathematical concepts.
 \end{document}
