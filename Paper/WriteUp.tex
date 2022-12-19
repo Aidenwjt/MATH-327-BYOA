@@ -31,7 +31,7 @@
 % Main Title
 \newcommand{\PaperTitle}{MATH 327 - Build Your Own Assesment}
 % Sub Title
-\newcommand{\PaperSubTitle}{Write up} 
+\newcommand{\PaperSubTitle}{Write-up} 
 % Authors
 \newcommand{\Authors}{Aiden Taylor(30092686) and Noah Pinel(30159409)}
 
@@ -56,7 +56,7 @@
 \fancyhead{}
 
 \fancyhead[L]{\slshape\nouppercase{\leftmark}}
-\rhead{MATH 327 Paper}
+\rhead{MATH 327 - BYOA Write-up}
 \fancyfoot{}
  
 % Hide section for format purposes i.e ToC and Abstract.
@@ -133,7 +133,7 @@ wanting to poke around.
 
 \newpage
 % -------- NOAH WU #1/2 --------
-\section{Visual Representation of Euler's Phi Function}
+\section{Visual Representation of Euler's Phi Function in Python}
 \subsection{Overview}
 Euler is one of the most well known Mathematicians ever, the following program I implemented 
 is a visual representation of a function he created, namely the Euler Phi function.
@@ -157,7 +157,7 @@ Matplotlib.pyplot to graph this list against the corresponding n value, figure(\
 The visual representations that arise from ideas in number theory are amazing to look at, and Euler's Phi function is no excuse. The power computers 
 give us to generate these models is just another example of how technology can give us deep insight into mathematical concepts.
 
-% Aiden writeup 1/2
+% Aiden Writeup 1/2
 \section{Implementation of a 2-Variable LDE Solver in C}
 \subsection{Overview}
 The definition from Weissman's Illustrated Theory of Numbers says, ``A Diophantine Equation is an equation
@@ -228,5 +228,38 @@ Also, I should probably improve my variable naming as I understand using $i,j,k,
 most likely makes absolutely no sense to people reading the code for the first time... I'll work on it. 
 In the end, I did not test the runtime of my implementation,
 but hopefully my use of C can mask the fact that I don't how to optimize code.
+\newpage
+
+% Aiden Writeup 2/2
+\section{Implementation of the Miller-Rabin Test in C}
+\subsection{Overview}
+The Miller-Rabin Test is a probabilistic primality test for all positive odd integers greater than 2.
+However, in this implementation, we will only be looking at integers between 2 and 2,047 so that we can use the
+witness prime 2 to give us precise results (and so that the exponential calculations are not super huge).
+\subsection{The Implementation}
+For this implementation I took inspiration from the pseudo-code at 
+https://en.wikipedia.org/wiki/Miller-Rabin\_primality\_test, 
+which would give a much more in depth explanation of the Miller-Rabin Test. Firstly, the user passes
+an odd integer $n$ that is within the specified bound. Then, it is broken down into the equation
+$n-1 = 2^s d$, where $s > 0$, $d>0$, and $d$ is odd. The reason we need to factor out powers of 2 from $n-1$
+is to check if one of the following two congruence relations hold
+\begin{itemize}
+\item $2^d \equiv1\!\mod{n},$
+\item $2^{2^rd} \equiv-1\!\mod{n}, \text{ for some } 0 \leq r < s,$
+\end{itemize}
+where these congruence relations follow from Fermat's Little Theorem. If one of these relations holds with
+$2 < n < 2,047$ ($n$ odd) then we can say $n$ is prime, where 2 is a witness for the primality of $n$. Otherwise, if
+neither of these hold, then $n$ is composite, where $2$ is a witness for the compositeness of $n$.
+\begin{center}
+  \includegraphics[scale=0.9]{primes.PNG}
+  \includegraphics[scale=0.818]{composites.PNG}
+\end{center}
+\subsection{Conclusion}
+Although my implementation only covers a small bound, it is easy to see that by adding more witness primes one could
+increase the bound considerably, at the cost of having to deal with huge numbers. I should also mention my use of
+geeksforgeeks implementation of a Modular Exponentiation function as dealing with the huge exponential
+calculations was definitely the biggest hurdle in this implementation (see the source code for the reference).
+In the end, I am pretty happy with this implementation, and I had a lot of fun researching this test and learning
+how important probability is in primality tests (even if my implementation didn't use any probability).
 
 \end{document}

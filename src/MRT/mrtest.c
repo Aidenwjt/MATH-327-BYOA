@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 		printf("%d is definitely composite.\n", n);
 		return 0;
 	}
-	printf("%d is prime, and tested again witness prime 2.\n", n);
+	printf("%d is prime, and tested against witness prime 2.\n", n);
 
 	return 0;
 }
