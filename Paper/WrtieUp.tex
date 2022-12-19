@@ -136,7 +136,7 @@ wanting to poke around.
 \section{Visual Representation of Euler's Phi Function}
 \subsection{Overview}
 Euler is one of the most well known Mathematicians ever, the following program I implemented 
-is a visual representation of function he created, namely the Euler Phi function.
+is a visual representation of a function he created, namely the Euler Phi function.
 \subsection{What is it?}
 Euler's Phi function takes in a positive value n, and counts the number of relatively prime numbers up to the original n.
 For example $\Phi(10)= |\{1,3,7,9\}| = 4$, so Euler's function is telling us that from 1-10, there are 4 numbers coprime to 10.
@@ -146,7 +146,7 @@ While reading the MATH-327's assigned text book I really enjoyed seeing all the 
 I decided to use python to create a visual of this special function. The process of coding this wasn't too bad, it consisted of reading in
 an n value, then for each i up to n, I would call the Phi function that I wrote, it would simply just check for a $\gcd(i_j, n) == 1$ and if 
 it returned true it was added to a list. After I had this list of all 1,..., n's respected Phi function values I was able to use the python library
-Matplotlib.pyplot to graph this list against the corresponding n value, (\ref{fig:PhiPlot}) is the awesome visual that was generated.\\
+Matplotlib.pyplot to graph this list against the corresponding n value, figure(\ref{fig:PhiPlot}) is the awesome visual that was generated.\\
 \begin{figure}
   \centering
   \includegraphics[scale=.4]{PHI.png}
@@ -155,5 +155,5 @@ Matplotlib.pyplot to graph this list against the corresponding n value, (\ref{fi
 \end{figure}
 \subsection{Conclusion}
 The visual representations that arise from ideas in number theory are amazing to look at, and Euler's Phi function is no excuse. The power computers 
-give us to generate these models is just another example of how technology can give us an insight into mathematical concepts.
+give us to generate these models is just another example of how technology can give us deep insight into mathematical concepts.
 \end{document}
