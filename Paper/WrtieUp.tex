@@ -6,6 +6,8 @@
 % 
 % 
 \documentclass{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{geometry}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -44,7 +46,10 @@
 
 %--- LAZY -----------------------------------------------------------------------------------
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\ps}{\{p_n\}}
+
+
 
 %---------------------HEADER FOOTER-----------------------------------------------------------
 \pagestyle{fancy}
@@ -80,11 +85,51 @@
 % -------- TEMPLATE FOR EACH CHAPTER --------
 % PAGE TEMPLATE, Section{Add Chapter title etc.}
 % Subsection will be all subtitles contained in your main chapter, i.e. Overveiw, Summary
-\section{Foo Program}
+\section{Implementation of The Sieve of Eratosthenes in Python}
 \subsection{Overview}
-This is an Overview of the program Foo 
-\subsection{The Math Behind it}
-The math used in Foo was ...
+The Sieve of Eratosthenes is a type of prime sieve. Prime sieves are algorithms 
+that are very good at generating prime numbers up to some upper bound n, where $n\in\Z^+$.
+The following sections explain the Implementation process of simulating the Sieve of Eratosthenes 
+in the programming language Python.
+
+\subsection{The Implementation}
+My first run in with the sieve of Eratosthenes was during my number theory course, the 
+mechanical nature of the sieve seemed to be a perfect way to utilize a computer to do
+some interesting math. The entirety of the program relies on the algorithm below, so here 
+are the meat and potatoes of the whole thing,
+\begin{algorithm}
+  \caption{: An algorithm for The Sieve of Eratosthenes}
+  \begin{algorithmic}[1]
+  \Require: $n > 0$
+  \Ensure: List of prime numbers 2, ..., n
+  \State Sieve$(n):$
+      \State Populate a boolean list P size 2, ..., n.
+      \State Initialize all index values to True.
+      \For{$i = 2,..., n+1$:} 
+          \State if P[i] TRUE
+          \For{$j = i^2, i^2+1, i^2+3,..., n$:}
+            \State set P$[j]$ False
+          \EndFor
+      \EndFor
+    \State Return P
+  \end{algorithmic}
+\end{algorithm}\\
+Simply put, we have a list of size $2,..., n$. We set all values of our list to True, then starting at 2 we loop through each index
+setting multiples of the respected current position to false. After this has run, we are left with a list where all prime values are
+unchecked, that is, they remain True while composite numbers are false. Below is a visual of the algorithm working for a list of size 10.
+\begin{center}
+  \includegraphics[scale=0.4]{Sieveiter.png}
+\end{center}
+We can see that after 8 iterations of following the algorithm the only index values set True are $2,3,5,7$, i.e., the first 4 primes. 
+Now as cool as it is to visualize the algorithm I feel like finding the number of primes $\leq$ some large n is a lot more interesting.
+To help with run time I disabled the visual aspect of the algorithm and was able to find a value for the primes up to $100,000,000$.
+\begin{center}
+  \includegraphics[scale=1.0]{primesFound.png}
+\end{center}
+Using the forbidden site Wolfram Alpha to verify, there are indeed 5,761,455 primes in between 2 and 100,000,000.
 \subsection{Conclusion}
-This then concludes our ...
+The last calculation presented took just about an epsilon under a minute to calculate, which for an algorithm that has been around for thousands of years
+I feel is very impressive, thus, Eratosthenes sieve is a powerful tool to find primes up to some appropriate positive integer. This problem also displays the interplay between Mathematics 
+and Computer Science and how they complement each other very well. The source code for Sieve.py will be included in our submission with documentation if you're
+wanting to poke around.
 \end{document}
