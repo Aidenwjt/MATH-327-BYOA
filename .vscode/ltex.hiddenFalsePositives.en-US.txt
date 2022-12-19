@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q: An algorithm for The Sieve of Eratosthenes : \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q : List of prime numbers 2, ..., n Sieve \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Populate a boolean list foundPrimes[] with size 2, ..., n.\\E$"}
