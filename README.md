@@ -1,4 +1,4 @@
-## MATH 327 - Number Theory Build Your Own Assessment (BYOA) Project
+## MATH 327 - Number Theory - Build Your Own Assessment (BYOA) Project
 
 ## Implemented Programs (Aiden):
 - 2 Variable LDE Solver (DONE)
